@@ -1,0 +1,36 @@
+Part A: Propositional Encoding Cost
+
+Adjacency: n^4
+    for n=100, 100,000,000
+
+Creaking Rule: n^2
+    for n=100, 10,000 sentences
+
+Safety Rule: n^2
+    for n=100, 10,000 sentences
+
+Part B: FOL Comparison
+
+Creaking: ⱯL Creaking(L) <=> ƎL' Adjacent(L,L') ^ Damaged(L')
+Rumbling: ⱯL Rumbling(L) <=> ƎL' Adjacent(L,L') ^ Forklift(L')
+Safety: ⱯL Safe(L) <=> ¬Damaged(L) ^ ¬Forklift(L)
+
+Only 3 sentences required.
+
+Part C: Translation Challenge
+
+FOL:
+ƎL Damaged(L) ^ ⱯL' (Damaged(L') => L'= L)
+
+Propositional: 
+D1,1 V D2,1 V D3,1 V D1,2 V D2,2 V D3,2 V D1,3 V D2,3 V D3,3
+
+¬Di,j V ¬Di',j'
+
+The following statement, "There is exactly one damaged floor section in the entire warehouse," can be expressed in propositional logic, however the number of clauses exponenetially grows at a scale of O(n^4)
+
+Part D: Practical Implications
+
+1. Propositional encoding for a 100x100 warehouse is not very practical due to its large number of clauses for a constraint and slower time to encode.
+2. Restrictions that would make FOL inference tractable includes Function-free FOL which makes the domain bounded and Horn clauses which allows forward and backward chaining for improved effiency.
+3. A hybrid approach works where FOL does general rules and logic compactly with little clauses while propositional logic can access a smaller localized section to efficiently encode.
